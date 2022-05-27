@@ -3,7 +3,7 @@ $texto = "";
 if (isset($_POST["texto"])) {
     $texto = $_POST["texto"];
     $textoAAnalizar = strtolower($texto);
-    $textoAAnalizar = str_replace(".", "", $textoAAnalizar);
+    /*$textoAAnalizar = str_replace(".", "", $textoAAnalizar);
     $textoAAnalizar = str_replace(",", "", $textoAAnalizar);
     $textoAAnalizar = str_replace(";", "", $textoAAnalizar);
     $textoAAnalizar = str_replace(":", "", $textoAAnalizar);
@@ -32,6 +32,9 @@ if (isset($_POST["texto"])) {
     $textoAAnalizar = str_replace("“", "", $textoAAnalizar);
     $textoAAnalizar = str_replace("”", "", $textoAAnalizar);
     $textoAAnalizar = str_replace("’", "", $textoAAnalizar);
+    */
+    $re = '/[^\w ]/m';
+    $textoAAnalizar = preg_replace($re, '', $textoAAnalizar);
     $arrPalabras = explode(" ", $textoAAnalizar);
 
     $frecuenciaPalabras = array();
