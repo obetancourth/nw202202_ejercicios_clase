@@ -30,6 +30,17 @@ class Categorias {
         }
         return $categorias;
     }
+
+    public function update($nombre, $descripcion, $estado, $id) {
+        $sql = "UPDATE categorias SET nombre = '$nombre',
+            descripcion = '$descripcion', estado = '$estado' WHERE id = $id";
+        $this->conexion->exec($sql);
+    }
+
+    public function delete( $id ) {
+        $sql = "DELETE FROM categorias WHERE id = $id";
+        $this->conexion->exec($sql);
+    }
 }
 
 ?>
