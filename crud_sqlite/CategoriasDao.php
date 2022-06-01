@@ -31,6 +31,17 @@ class Categorias {
         return $categorias;
     }
 
+    public function getById($codigo)
+    {
+        $sql = "SELECT * FROM categorias where id=$codigo";
+        $result = $this->conexion->query($sql);
+        //$categorias = array();
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            return $row;
+        }
+        return array();
+    }
+
     public function update($nombre, $descripcion, $estado, $id) {
         $sql = "UPDATE categorias SET nombre = '$nombre',
             descripcion = '$descripcion', estado = '$estado' WHERE id = $id";
